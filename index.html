@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Board</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar">
+        <h1>📝 블로그</h1>
+        <div class="navbar-right" id="navbarRight">
+          <button class="btn-primary" onclick="showPage('login')">로그인</button>
+        </div>
+      </div>
+
+      <div class="content">
+        <!-- 로그인 페이지 -->
+        <div id="login" class="page active">
+          <h2>로그인</h2>
+          <div id="loginMessage"></div>
+          <div class="form-group">
+            <label>아이디</label>
+            <input type="text" id="loginUserid" placeholder="아이디 입력" />
+          </div>
+          <div class="form-group">
+            <label>비밀번호</label>
+            <input type="password" id="loginPassword" placeholder="비밀번호 입력" />
+          </div>
+          <div class="form-buttons">
+            <button class="btn-success" onclick="handleLogin()">로그인</button>
+            <button class="btn-secondary" onclick="showPage('signup')">회원가입</button>
+          </div>
+        </div>
+
+        <!-- 회원가입 페이지 -->
+        <div id="signup" class="page">
+          <h2>회원가입</h2>
+          <div id="signupMessage"></div>
+          <div class="form-group">
+            <label>아이디</label>
+            <input type="text" id="signupUserid" placeholder="아이디 입력" />
+          </div>
+          <div class="form-group">
+            <label>비밀번호</label>
+            <input type="password" id="signupPassword" placeholder="비밀번호 입력" />
+          </div>
+          <div class="form-group">
+            <label>비밀번호 확인</label>
+            <input type="password" id="signupPasswordConfirm" placeholder="비밀번호 확인" />
+          </div>
+          <div class="form-group">
+            <label>이메일</label>
+            <input type="email" id="signupEmail" placeholder="example@email.com" />
+          </div>
+          <div class="form-group">
+            <label>닉네임</label>
+            <input type="text" id="signupNickname" placeholder="닉네임을 입력해주세요." />
+          </div>
+          <div class="form-buttons">
+            <button class="btn-success" onclick="handleSignup()">가입하기</button>
+            <button class="btn-secondary" onclick="showPage('login')">로그인으로</button>
+          </div>
+        </div>
+
+        <!-- 포스트 목록 페이지 -->
+        <div id="postList" class="page">
+          <div id="postList-title">
+            <h2>포스트 목록</h2>
+            <button class="btn-primary" onclick="goToCreatePost()">새 포스트 작성</button>
+          </div>
+
+          <div class="search-box">
+            <input type="text" id="searchUser" placeholder="사용자 ID 혹은 닉네임으로 검색..." />
+            <button class="btn-primary" onclick="handleSearch()">검색</button>
+            <button class="btn-secondary" onclick="handleViewAll()">전체 보기</button>
+          </div>
+
+          <div id="postMessage"></div>
+          <div id="postsContainer">
+            <div class="loading">포스트를 불러오는 중...</div>
+          </div>
+        </div>
+
+        <!-- 포스트 작성 페이지 -->
+        <div id="postCreate" class="page">
+          <h2>새 포스트 작성</h2>
+          <div id="createMessage"></div>
+          <div class="form-group">
+            <label>제목</label>
+            <input type="text" id="postTitle" placeholder="포스트 제목 입력" />
+          </div>
+          <div class="form-group">
+            <label>내용</label>
+            <textarea id="postContent" placeholder="포스트 내용 입력"></textarea>
+          </div>
+          <div class="form-buttons">
+            <button class="btn-primary" onclick="handleCreatePost()">작성하기</button>
+            <button class="btn-secondary" onclick="showPage('postList')">취소</button>
+          </div>
+        </div>
+
+        <!-- 포스트 상세 페이지 -->
+        <div id="postDetail" class="page">
+          <div style="margin-bottom: 20px">
+            <button class="btn-secondary" onclick="showPage('postList')">← 목록으로</button>
+          </div>
+          <div id="detailMessage"></div>
+          <div id="detailContainer"></div>
+        </div>
+
+        <!-- 포스트 수정 페이지 -->
+        <div id="postEdit" class="page">
+          <h2>포스트 수정</h2>
+          <div id="editMessage"></div>
+          <div class="form-group">
+            <label>제목</label>
+            <input type="text" id="editTitle" placeholder="제목 입력" />
+          </div>
+          <div class="form-group">
+            <label>내용</label>
+            <textarea id="editContent" placeholder="내용 입력"></textarea>
+          </div>
+          <div class="form-buttons">
+            <button class="btn-primary" onclick="handleUpdatePost()">수정하기</button>
+            <button class="btn-secondary" onclick="showPage('postDetail')">취소</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="./js/app.js"></script>
+  </body>
+</html>
